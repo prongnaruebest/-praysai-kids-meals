@@ -4,61 +4,66 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#173b4d">
-  <meta name="description" content="เลือกวัตถุดิบในตู้เย็น แล้วค้นหาเมนูอาหารเด็กที่ทำได้ทันที">
+  <meta name="description" content="เลือกวัตถุดิบที่มี แล้วค้นหาเมนูอาหารสำหรับเด็กตามวัย เวลา และข้อจำกัดด้านอาหาร">
   <title>เมนูของปรายใส</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23173b4d'/%3E%3Cpath d='M15 31h34a17 17 0 0 1-34 0Z' fill='%23f5c45e'/%3E%3Cpath d='M21 24c4-6 18-6 22 0' fill='none' stroke='%23fff' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap');
-    :root{--ink:#173b4d;--muted:#63737b;--line:#d9e2e5;--paper:#fff;--wash:#eef7f8;--accent:#e79b36;--accent2:#f6cb73;--safe:#24745a;--danger:#a44b40;--shadow:0 14px 38px rgba(24,59,77,.11)}
-    *{box-sizing:border-box} body{margin:0;background:#f7fafb;color:var(--ink);font-family:'Noto Sans Thai',system-ui,sans-serif;font-size:16px;line-height:1.55} button,input,select{font:inherit} button{cursor:pointer}
-    .shell{max-width:1180px;margin:auto;padding:0 20px 72px}.topbar{display:flex;align-items:center;justify-content:space-between;padding:22px 0 16px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.2rem}.brandmark{width:42px;height:42px;border-radius:14px;background:var(--ink);display:grid;place-items:center;color:#fff}.child{display:flex;gap:10px;align-items:center;color:var(--muted)} select{border:1px solid var(--line);background:#fff;color:var(--ink);padding:9px 34px 9px 12px;border-radius:12px}
-    .intro{display:grid;grid-template-columns:1.02fr .98fr;border-radius:28px;overflow:hidden;background:var(--ink);color:#fff;min-height:310px;box-shadow:var(--shadow)}.intro-copy{padding:44px 42px;display:flex;flex-direction:column;justify-content:center}.eyebrow{font-size:.82rem;letter-spacing:.08em;color:#a9dadd;font-weight:700}.intro h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.13;margin:8px 0 15px;letter-spacing:-.04em}.intro p{color:#d6e6e9;max-width:520px;margin:0}.intro img{width:100%;height:100%;object-fit:cover;min-height:310px}
-    .workspace{display:grid;grid-template-columns:360px 1fr;gap:24px;margin-top:26px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:23px;box-shadow:0 8px 24px rgba(24,59,77,.05)}.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.panel h2{font-size:1.15rem;margin:0}.count{background:var(--wash);padding:4px 10px;border-radius:99px;font-size:.83rem;font-weight:700}.search{width:100%;border:1px solid var(--line);border-radius:13px;padding:12px 14px;margin-bottom:14px;outline:none}.search:focus{border-color:#5795a2;box-shadow:0 0 0 3px #ddecf0}.tabs{display:flex;gap:7px;overflow:auto;padding-bottom:8px}.tab{border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:99px;padding:7px 11px;white-space:nowrap;font-size:.86rem}.tab.active{background:var(--ink);border-color:var(--ink);color:#fff}.ingredients{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px;max-height:420px;overflow:auto;padding-right:3px}.ingredient{border:1px solid var(--line);background:#fff;border-radius:13px;padding:10px;text-align:left;color:var(--ink);transition:.18s}.ingredient:hover{border-color:#7aa7ae}.ingredient.selected{background:#e8f4f2;border-color:#4b907d;font-weight:700}.ingredient.selected:before{content:'✓ ';color:var(--safe)}.reset{border:0;background:transparent;color:var(--danger);font-weight:600}.primary{width:100%;border:0;border-radius:14px;background:var(--accent);color:#263943;font-weight:800;padding:13px;margin-top:17px}.primary:hover{background:#f0ad4f}
-    .results-head{display:flex;align-items:end;justify-content:space-between;margin:2px 2px 14px}.results-head h2{font-size:1.45rem;margin:0}.results-head p{margin:2px 0 0;color:var(--muted)}.sort{font-size:.9rem}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;position:relative;overflow:hidden;transition:.18s}.card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.match{font-size:.78rem;font-weight:800;color:var(--safe);text-transform:uppercase}.score{position:absolute;right:17px;top:17px;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--wash);font-weight:800}.card h3{font-size:1.18rem;margin:12px 55px 6px 0}.meta{display:flex;gap:10px;color:var(--muted);font-size:.85rem}.missing{margin:15px 0 0;padding-top:13px;border-top:1px solid var(--line);font-size:.88rem}.missing strong{color:var(--danger)}.card button{border:0;background:transparent;color:var(--ink);font-weight:800;padding:12px 0 0}.empty{grid-column:1/-1;padding:52px;text-align:center;background:#fff;border:1px dashed #aec1c6;border-radius:20px}.empty h3{margin:0 0 6px}.empty p{margin:0;color:var(--muted)}
-    dialog{border:0;border-radius:25px;padding:0;max-width:660px;width:calc(100% - 28px);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.28)}dialog::backdrop{background:rgba(12,34,43,.58)}.modal{padding:28px}.modal-top{display:flex;justify-content:space-between;gap:16px}.modal h2{margin:0;font-size:1.65rem}.close{border:0;background:var(--wash);border-radius:50%;width:38px;height:38px;font-size:1.2rem}.facts{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.pill{background:var(--wash);border-radius:99px;padding:6px 11px;font-size:.87rem}.modal h3{margin:22px 0 7px}.modal ul,.modal ol{padding-left:23px;margin:0}.notice{background:#fff6df;border-left:4px solid var(--accent);padding:13px 14px;margin-top:20px;border-radius:8px}.footer-note{margin-top:30px;color:var(--muted);font-size:.83rem;text-align:center}
-    @media(max-width:850px){.intro{grid-template-columns:1fr}.intro-copy{padding:32px 26px}.intro img{height:230px;min-height:0}.workspace{grid-template-columns:1fr}.ingredients{max-height:300px}.cards{grid-template-columns:1fr}}
-    @media(max-width:480px){.shell{padding:0 14px 50px}.child label{display:none}.intro{border-radius:22px}.panel{padding:18px}.results-head{align-items:start;flex-direction:column;gap:9px}.sort{width:100%}.ingredients{grid-template-columns:1fr 1fr}.card{padding:18px}}
-  </style>
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="เมนูของปรายใส หน้าหลัก"><span class="brandmark">ป</span><span>เมนูของปรายใส</span></a>
+    <div class="header-actions">
+      <button class="ghost" id="favoritesButton" type="button">เมนูโปรด <span id="favoriteCount">0</span></button>
+      <button class="ghost" id="shoppingButton" type="button">รายการซื้อ <span id="shoppingCount">0</span></button>
+    </div>
+  </header>
+
   <main class="shell">
-    <header class="topbar"><div class="brand"><span class="brandmark">ป</span><span>เมนูของปรายใส</span></div><div class="child"><label for="age">วัยของลูก</label><select id="age"><option value="6">6–8 เดือน</option><option value="9">9–11 เดือน</option><option value="12" selected>1–2 ปี</option><option value="24">2 ปีขึ้นไป</option></select></div></header>
-    <section class="intro"><div class="intro-copy"><div class="eyebrow">วันนี้มีอะไรในตู้เย็น</div><h1>เลือกของที่มี<br>แล้วหาเมนูให้ลูก</h1><p>ระบบจะเรียงเมนูที่ใช้วัตถุดิบของคุณได้มากที่สุด พร้อมบอกของที่ยังขาดและวิธีเตรียมให้เหมาะกับวัย</p></div><img src="toddler-meal.webp" alt="ข้าวนุ่มใส่ไก่ ไข่ ฟักทอง แครอต และบรอกโคลีสำหรับเด็ก"></section>
-    <section class="workspace">
-      <aside class="panel"><div class="panel-head"><h2>วัตถุดิบที่มี</h2><span class="count" id="selectedCount">0 รายการ</span></div><input class="search" id="search" type="search" placeholder="ค้นหา เช่น ไข่ ฟักทอง" aria-label="ค้นหาวัตถุดิบ"><div class="tabs" id="tabs"></div><div class="ingredients" id="ingredients"></div><button class="reset" id="reset">ล้างที่เลือกทั้งหมด</button><button class="primary" id="find">ดูเมนูที่ทำได้</button></aside>
-      <section><div class="results-head"><div><h2>เมนูที่แนะนำ</h2><p id="summary">เลือกวัตถุดิบเพื่อค้นหาเมนู</p></div><select class="sort" id="meal"><option value="all">ทุกมื้อ</option><option value="เช้า">มื้อเช้า</option><option value="กลางวัน">มื้อกลางวัน</option><option value="เย็น">มื้อเย็น</option><option value="ว่าง">อาหารว่าง</option></select></div><div class="cards" id="cards"></div></section>
+    <section class="brief">
+      <div><p class="eyebrow">วัตถุดิบที่บ้าน → เมนูที่ทำได้</p><h1>วันนี้ให้ปรายใสกินอะไรดี?</h1><p>เลือกของที่มี ระบบจะเรียงเมนูที่ทำได้ก่อน พร้อมบอกของที่ขาด เวลา และวิธีเตรียมให้เหมาะกับวัย</p></div>
+      <img src="./toddler-meal.webp" alt="ตัวอย่างอาหารเนื้อนุ่มสำหรับเด็ก" width="420" height="220">
     </section>
-    <p class="footer-note">ข้อมูลในเว็บเป็นแนวทางทั่วไป ผู้ปกครองควรปรับเนื้อสัมผัสตามทักษะการเคี้ยว ตรวจประวัติแพ้อาหาร และดูแลเด็กขณะรับประทานเสมอ</p>
+
+    <section class="settings" aria-label="ตัวกรองเมนู">
+      <label>วัยของลูก<select id="age"><option value="6">6–8 เดือน</option><option value="9">9–11 เดือน</option><option value="12">12–17 เดือน</option><option value="18" selected>18–23 เดือน</option><option value="24">2 ปีขึ้นไป</option></select></label>
+      <label>มื้ออาหาร<select id="meal"><option value="all">ทุกมื้อ</option><option value="เช้า">มื้อเช้า</option><option value="กลางวัน">มื้อกลางวัน</option><option value="เย็น">มื้อเย็น</option><option value="ว่าง">อาหารว่าง</option></select></label>
+      <label>เวลาสูงสุด<select id="maxTime"><option value="999">ไม่จำกัด</option><option value="10">ไม่เกิน 10 นาที</option><option value="20">ไม่เกิน 20 นาที</option><option value="30">ไม่เกิน 30 นาที</option></select></label>
+      <label>เนื้อสัมผัส<select id="texture"><option value="all">ทุกแบบ</option><option value="บดเนียน">บดเนียน</option><option value="บดหยาบ">บดหยาบ</option><option value="ชิ้นนุ่ม">ชิ้นนุ่ม</option><option value="หยิบกิน">หยิบกิน</option></select></label>
+      <button class="filter-button" id="moreFilters" type="button" aria-expanded="false">สารก่อภูมิแพ้และอุปกรณ์ <span id="activeFilterCount">0</span></button>
+    </section>
+
+    <section class="advanced" id="advancedFilters" hidden>
+      <fieldset><legend>ไม่แสดงเมนูที่มี</legend><div class="check-grid" id="allergenFilters"></div></fieldset>
+      <fieldset><legend>อุปกรณ์ที่มี</legend><div class="check-grid" id="equipmentFilters"></div></fieldset>
+    </section>
+
+    <section class="workspace">
+      <aside class="panel ingredient-panel">
+        <div class="panel-head"><div><p class="step">ขั้นที่ 1</p><h2>เลือกวัตถุดิบที่มี</h2></div><span class="count" id="selectedCount">0 รายการ</span></div>
+        <input class="search" id="search" type="search" placeholder="ค้นหา เช่น ไข่ ฟักทอง ปลา" autocomplete="off">
+        <div class="tabs" id="tabs" role="tablist" aria-label="หมวดวัตถุดิบ"></div>
+        <div class="ingredients" id="ingredients"></div>
+        <div class="panel-actions"><button class="link-danger" id="resetIngredients" type="button">ล้างที่เลือก</button><button class="primary" id="findButton" type="button">ดูเมนูที่ทำได้</button></div>
+      </aside>
+
+      <section class="results" id="results">
+        <div class="results-head"><div><p class="step">ขั้นที่ 2</p><h2>เมนูที่แนะนำ</h2><p id="summary">เลือกวัตถุดิบเพื่อค้นหาเมนู</p></div><div class="result-actions"><button class="secondary" id="randomButton" type="button">สุ่มเมนู</button><select id="sort" aria-label="เรียงลำดับ"><option value="match">ตรงกับของที่มี</option><option value="time">เวลาน้อยที่สุด</option><option value="missing">ของขาดน้อยที่สุด</option></select></div></div>
+        <div class="cards" id="cards"></div>
+      </section>
+    </section>
+
+    <section class="history-section"><div><h2>เมนูที่ดูล่าสุด</h2><p>เก็บไว้เฉพาะในอุปกรณ์นี้</p></div><div class="history-list" id="recentList"></div></section>
+    <section class="safety"><h2>ข้อควรระวัง</h2><p>ปรับขนาดและเนื้อสัมผัสตามทักษะการเคี้ยวและกลืน นำก้าง กระดูก และเมล็ดแข็งออก ปรุงเนื้อสัตว์และไข่ให้สุก และดูแลเด็กขณะรับประทานเสมอ</p></section>
+    <p class="disclaimer">ข้อมูลนี้เป็นแนวทางจัดเตรียมอาหารทั่วไป ไม่ใช่คำแนะนำทางการแพทย์ เด็กแต่ละคนมีพัฒนาการและประวัติแพ้อาหารต่างกัน หากมีโรคประจำตัว น้ำหนักขึ้นไม่เหมาะสม กลืนลำบาก หรือสงสัยว่าแพ้อาหาร ควรปรึกษากุมารแพทย์หรือนักกำหนดอาหารเด็ก</p>
+    <div class="data-control"><button class="link-danger" id="clearDataButton" type="button">ล้างข้อมูลที่บันทึกในอุปกรณ์นี้</button></div>
   </main>
-  <dialog id="recipeDialog"><div class="modal" id="modalContent"></div></dialog>
-  <script>
-    const groups={ทั้งหมด:[],โปรตีน:['ไข่','ไก่','หมู','ปลา','เต้าหู้','กุ้ง'],ผัก:['ฟักทอง','แครอต','บรอกโคลี','ตำลึง','ผักโขม','มะเขือเทศ','มันฝรั่ง','ข้าวโพด'],คาร์โบไฮเดรต:['ข้าว','ข้าวโอ๊ต','เส้นเล็ก','ขนมปัง','มักกะโรนี'],ผลไม้:['กล้วย','แอปเปิล','อะโวคาโด','มะละกอ'],อื่นๆ:['นมสด','โยเกิร์ต','ชีส','กะทิ']};
-    const all=[...new Set(Object.values(groups).flat())];groups.ทั้งหมด=all;
-    const recipes=[
-      {name:'ข้าวต้มไก่ฟักทอง',need:['ข้าว','ไก่','ฟักทอง','แครอต'],age:9,meal:['เช้า','เย็น'],time:25,texture:'นุ่ม บดหยาบ',allergy:[],steps:['ต้มข้าวกับน้ำจนเมล็ดข้าวนุ่ม','ใส่ไก่สับและฟักทอง ต้มให้สุกทั่วถึง','ใส่แครอต ต้มต่อจนนิ่ม แล้วบดหรือสับตามวัย']},
-      {name:'ข้าวผัดไข่ผักนุ่ม',need:['ข้าว','ไข่','แครอต','บรอกโคลี'],age:12,meal:['กลางวัน','เย็น'],time:15,texture:'นุ่ม ชิ้นเล็ก',allergy:['ไข่'],steps:['นึ่งแครอตและบรอกโคลีให้นิ่มแล้วสับเล็ก','ผัดไข่ให้สุกทั่วถึงด้วยน้ำมันเล็กน้อย','ใส่ข้าวและผัก เติมน้ำเล็กน้อย ผัดจนนุ่ม']},
-      {name:'ไข่ตุ๋นไก่สับ',need:['ไข่','ไก่','แครอต'],age:9,meal:['เช้า','กลางวัน'],time:20,texture:'เนียนนุ่ม',allergy:['ไข่'],steps:['ตีไข่กับน้ำอุ่นประมาณ 1:1.5 แล้วกรอง','ใส่ไก่และแครอตสับละเอียด','นึ่งไฟอ่อนจนไข่และไก่สุกทั่วถึง']},
-      {name:'โจ๊กปลาใส่ตำลึง',need:['ข้าว','ปลา','ตำลึง'],age:6,meal:['เช้า','เย็น'],time:30,texture:'บดละเอียดตามวัย',allergy:['ปลา'],steps:['ต้มข้าวจนเป็นโจ๊ก','นึ่งปลาให้สุก แกะก้างออกอย่างละเอียด','ใส่ปลาและตำลึงสับ ต้มจนสุกแล้วปรับเนื้อสัมผัส']},
-      {name:'มักกะโรนีหมูซอสมะเขือเทศ',need:['มักกะโรนี','หมู','มะเขือเทศ','แครอต'],age:12,meal:['กลางวัน','เย็น'],time:25,texture:'นุ่ม ตัดสั้น',allergy:['กลูเตน'],steps:['ต้มมักกะโรนีให้นิ่มกว่าปกติแล้วตัดสั้น','ผัดหมูสับจนสุก เติมมะเขือเทศและแครอต','เติมน้ำ เคี่ยวให้ผักนิ่ม แล้วคลุกเส้นโดยไม่เติมซอสเค็ม']},
-      {name:'แพนเค้กกล้วยข้าวโอ๊ต',need:['กล้วย','ข้าวโอ๊ต','ไข่'],age:12,meal:['เช้า','ว่าง'],time:12,texture:'นุ่ม จับถือได้',allergy:['ไข่'],steps:['บดกล้วย ผสมข้าวโอ๊ตและไข่','พักส่วนผสม 5 นาที','ทอดแผ่นเล็กด้วยไฟอ่อนจนสุกทั้งสองด้าน ตัดเป็นแท่งนุ่ม']},
-      {name:'มันฝรั่งบดไก่และชีส',need:['มันฝรั่ง','ไก่','ชีส'],age:9,meal:['กลางวัน','เย็น'],time:25,texture:'บดนุ่ม',allergy:['นม'],steps:['ต้มมันฝรั่งจนใช้ส้อมบี้ได้','ต้มไก่ให้สุกแล้วสับละเอียด','บดรวมกัน เติมชีสเล็กน้อยและน้ำต้มสุกให้เนื้อนุ่ม']},
-      {name:'เต้าหู้ผัดไข่มะเขือเทศ',need:['เต้าหู้','ไข่','มะเขือเทศ'],age:12,meal:['กลางวัน','เย็น'],time:15,texture:'นุ่ม ชิ้นเล็ก',allergy:['ถั่วเหลือง','ไข่'],steps:['ลอกเปลือกมะเขือเทศและสับ','ยีเต้าหู้แล้วผัดกับมะเขือเทศจนร้อนทั่ว','ใส่ไข่และผัดจนสุกทั่วถึง']},
-      {name:'ข้าวแกงกะทิฟักทองปลา',need:['ข้าว','ปลา','ฟักทอง','กะทิ'],age:12,meal:['กลางวัน','เย็น'],time:25,texture:'นุ่ม มีน้ำขลุกขลิก',allergy:['ปลา'],steps:['ต้มฟักทองในกะทิเจือจางจนนิ่ม','ใส่ปลาไร้ก้าง ต้มจนสุกทั่วถึง','บี้ฟักทองและปลา เสิร์ฟกับข้าวนุ่มโดยไม่เติมเครื่องแกง']},
-      {name:'โยเกิร์ตกล้วยอะโวคาโด',need:['โยเกิร์ต','กล้วย','อะโวคาโด'],age:6,meal:['ว่าง'],time:5,texture:'บดเนียน',allergy:['นม'],steps:['เลือกโยเกิร์ตรสธรรมชาติไม่เติมน้ำตาล','บดกล้วยและอะโวคาโด','ผสมและเสิร์ฟทันทีในปริมาณเหมาะสม']},
-      {name:'ซุปข้าวโพดไก่',need:['ข้าวโพด','ไก่','มันฝรั่ง','นมสด'],age:12,meal:['กลางวัน','เย็น'],time:30,texture:'ข้นนุ่ม',allergy:['นม'],steps:['ต้มข้าวโพดและมันฝรั่งให้นิ่ม','ใส่ไก่ ต้มจนสุกทั่วถึง','ปั่นหรือบดหยาบ เติมนมและอุ่นโดยไม่ให้เดือดจัด']},
-      {name:'ขนมปังหน้าไข่ผัก',need:['ขนมปัง','ไข่','แครอต','ชีส'],age:12,meal:['เช้า','ว่าง'],time:15,texture:'นุ่ม ตัดแท่ง',allergy:['กลูเตน','ไข่','นม'],steps:['ผสมไข่กับแครอตสับละเอียด','ชุบหรือทาบนขนมปัง โรยชีสเล็กน้อย','จี่ไฟอ่อนจนไข่สุก ตัดขอบแข็งและหั่นแท่ง']},
-      {name:'เส้นเล็กน้ำไก่ผักรวม',need:['เส้นเล็ก','ไก่','ตำลึง','แครอต'],age:12,meal:['กลางวัน','เย็น'],time:20,texture:'เส้นตัดสั้น ผักนิ่ม',allergy:[],steps:['ต้มไก่และแครอตในน้ำจนสุกนิ่ม','ใส่เส้นเล็กและตำลึง ต้มจนสุก','ตัดเส้นให้สั้น ตรวจชิ้นอาหารก่อนเสิร์ฟ']},
-      {name:'แอปเปิลข้าวโอ๊ตตุ๋น',need:['แอปเปิล','ข้าวโอ๊ต','นมสด'],age:9,meal:['เช้า','ว่าง'],time:15,texture:'ข้นนุ่ม',allergy:['นม'],steps:['ปอกเปลือกและขูดแอปเปิล','ต้มข้าวโอ๊ตกับน้ำจนนุ่ม','ใส่แอปเปิลและนม ตุ๋นจนสุกนิ่ม พักให้อุ่น']}
-    ];
-    let selected=new Set(JSON.parse(localStorage.getItem('praysaiIngredients')||'["ข้าว","ไข่","ไก่","ฟักทอง","แครอต"]'));let active='ทั้งหมด';
-    const $=s=>document.querySelector(s),ingredients=$('#ingredients'),cards=$('#cards');
-    function tabs(){ $('#tabs').innerHTML=Object.keys(groups).map(g=>`<button class="tab ${g===active?'active':''}" data-group="${g}">${g}</button>`).join('');document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{active=b.dataset.group;tabs();drawIngredients()}) }
-    function drawIngredients(){let q=$('#search').value.trim();let list=groups[active].filter(x=>x.includes(q));ingredients.innerHTML=list.map(x=>`<button class="ingredient ${selected.has(x)?'selected':''}" data-name="${x}" aria-pressed="${selected.has(x)}">${x}</button>`).join('')||'<span>ไม่พบวัตถุดิบ</span>';document.querySelectorAll('.ingredient').forEach(b=>b.onclick=()=>{selected.has(b.dataset.name)?selected.delete(b.dataset.name):selected.add(b.dataset.name);save();drawIngredients();render()});$('#selectedCount').textContent=`${selected.size} รายการ`}
-    function save(){localStorage.setItem('praysaiIngredients',JSON.stringify([...selected]))}
-    function ranked(){let minAge=+$(`#age`).value,meal=$('#meal').value;return recipes.map((r,id)=>({...r,id})).filter(r=>r.age<=minAge&&(meal==='all'||r.meal.includes(meal))).map(r=>{let have=r.need.filter(x=>selected.has(x));return {...r,have,missing:r.need.filter(x=>!selected.has(x)),score:Math.round(have.length/r.need.length*100)}}).filter(r=>r.have.length>0).sort((a,b)=>b.score-a.score||a.missing.length-b.missing.length)}
-    function render(){let list=ranked();$('#summary').textContent=selected.size?`พบ ${list.length} เมนูจากวัตถุดิบ ${selected.size} รายการ`:'เลือกวัตถุดิบเพื่อค้นหาเมนู';cards.innerHTML=list.length?list.map(r=>`<article class="card"><span class="match">${r.score===100?'ทำได้ครบ':'ใกล้เคียง'}</span><span class="score">${r.score}%</span><h3>${r.name}</h3><div class="meta"><span>${r.time} นาที</span><span>วัย ${r.age}+ เดือน</span></div><p class="missing">${r.missing.length?`<strong>ยังขาด:</strong> ${r.missing.join(', ')}`:'มีวัตถุดิบหลักครบแล้ว'}</p><button data-recipe="${r.id}">ดูวิธีทำ →</button></article>`).join(''):`<div class="empty"><h3>ยังไม่พบเมนูที่ตรง</h3><p>ลองเลือกวัตถุดิบเพิ่ม หรือเปลี่ยนช่วงวัยและมื้ออาหาร</p></div>`;document.querySelectorAll('[data-recipe]').forEach(b=>b.onclick=()=>openRecipe(recipes[+b.dataset.recipe]))}
-    function openRecipe(r){let missing=r.need.filter(x=>!selected.has(x));$('#modalContent').innerHTML=`<div class="modal-top"><div><span class="match">สูตรสำหรับเด็ก</span><h2>${r.name}</h2></div><button class="close" aria-label="ปิด">×</button></div><div class="facts"><span class="pill">${r.time} นาที</span><span class="pill">วัย ${r.age}+ เดือน</span><span class="pill">${r.texture}</span></div><h3>วัตถุดิบ</h3><ul>${r.need.map(x=>`<li>${x}${selected.has(x)?' — มีแล้ว':' — ยังขาด'}</li>`).join('')}</ul><h3>วิธีทำ</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol>${r.allergy.length?`<div class="notice"><strong>สารก่อภูมิแพ้ที่ควรตรวจสอบ:</strong> ${r.allergy.join(', ')} ควรเริ่มอาหารใหม่ทีละชนิดและสังเกตอาการ</div>`:''}${missing.length?`<div class="notice"><strong>รายการที่ต้องหาเพิ่ม:</strong> ${missing.join(', ')}</div>`:''}`;$('#recipeDialog').showModal();$('.close').onclick=()=>$('#recipeDialog').close()}
-    $('#recipeDialog').onclick=e=>{if(e.target===$('#recipeDialog'))$('#recipeDialog').close()};$('#search').oninput=drawIngredients;$('#reset').onclick=()=>{selected.clear();save();drawIngredients();render()};$('#find').onclick=()=>document.querySelector('.results-head').scrollIntoView({behavior:'smooth'});$('#age').onchange=render;$('#meal').onchange=render;tabs();drawIngredients();render();
-  </script>
+
+  <button class="mobile-find" id="mobileFind" type="button">ดูเมนูที่ทำได้ <span id="mobileSelectedCount">0</span></button>
+
+  <dialog id="recipeDialog"><div id="recipeContent"></div></dialog>
+  <dialog id="listDialog"><div id="listContent"></div></dialog>
+  <dialog id="confirmDialog"><div class="dialog-body"><h2>ล้างข้อมูลทั้งหมด?</h2><p>รายการโปรด ประวัติ และค่าที่เลือกในอุปกรณ์นี้จะถูกลบ</p><div class="dialog-actions"><button class="secondary" id="cancelClear">ยกเลิก</button><button class="danger" id="confirmClear">ล้างข้อมูล</button></div></div></dialog>
+
+  <script type="module" src="./js/app.js"></script>
 </body>
 </html>
